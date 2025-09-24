@@ -1,13 +1,12 @@
 # ==============================================================================
 # --- CONFIGURAÇÕES PERSONALIZÁVEIS ---
-# Altere os valores aqui para customizar seu controle remoto.
 # ==============================================================================
 
 # GRUPO DO RÁDIO: Deve ser o mesmo número no controle e no robô (de 0 a 255).
 RADIO_GROUP = 1
 
-# COMANDOS DE TEXTO: Você pode mudar os textos que são enviados via rádio.
-# Lembre-se de usar os mesmos textos no código do robô!
+# COMANDOS NUMÉRICOS: Agora enviaremos números que o robô entende.
+# 1 = Frente, 2 = Trás, 3 = Esquerda, 4 = Direita, 5 = Parar
 CMD_FORWARD = 1
 CMD_BACKWARD = 2
 CMD_LEFT = 3
@@ -16,31 +15,30 @@ CMD_STOP = 5
 
 # ==============================================================================
 # --- LÓGICA PRINCIPAL ---
-# Não é necessário alterar o código abaixo desta linha.
 # ==============================================================================
 
 def on_button_pressed_a():
-    radio.send_string(CMD_FORWARD)
+    radio.send_number(CMD_FORWARD) # ALTERADO
     basic.show_arrow(ArrowNames.NORTH)
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_b():
-    radio.send_string(CMD_BACKWARD)
+    radio.send_number(CMD_BACKWARD) # ALTERADO
     basic.show_arrow(ArrowNames.SOUTH)
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
 def on_gesture_tilt_left():
-    radio.send_string(CMD_LEFT)
+    radio.send_number(CMD_LEFT) # ALTERADO
     basic.show_arrow(ArrowNames.WEST)
 input.on_gesture(Gesture.TILT_LEFT, on_gesture_tilt_left)
 
 def on_gesture_tilt_right():
-    radio.send_string(CMD_RIGHT)
+    radio.send_number(CMD_RIGHT) # ALTERADO
     basic.show_arrow(ArrowNames.EAST)
 input.on_gesture(Gesture.TILT_RIGHT, on_gesture_tilt_right)
 
 def on_button_pressed_ab():
-    radio.send_string(CMD_STOP)
+    radio.send_number(CMD_STOP) # ALTERADO
     basic.show_icon(IconNames.NO)
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
